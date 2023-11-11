@@ -1,7 +1,8 @@
 import SelectedCourses from "../components/selectedCourses";
 import CoursesList from "../components/coursesList";
 
-export const Home = () => {
+export const Home = async () => {
+
     return (
         <div className="bg-gray-500 h-[100vh]">
             <div className="text-center h-[20vh]">

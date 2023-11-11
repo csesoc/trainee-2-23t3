@@ -9,3 +9,17 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model Course {
+  courseCode   String @id
+  courseName   String
+  termsOffered Term[]
+  doomness     Int
+}
+
+model Term {
+  id       Int    @id @default(autoincrement())
+  courseId String
+  term     String
+  course   Course @relation(fields: [courseId], references: [courseCode])
+}

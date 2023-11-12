@@ -1,16 +1,23 @@
 import SelectedCourse from "./selectedCourse";
 import Dropdown from "./termSelectDropDown";
 
-export const SelectedCourses = () => {
+type SelectedCoursesProps = {
+    selectedCourses: string[]
+    selectedTerm: number
+    handleSelectedTerm: (term: number) => void
+}
+export const SelectedCourses = ({ selectedCourses, selectedTerm, handleSelectedTerm }: SelectedCoursesProps) => {
+    const courses = selectedCourses.map((course, index) => {
+        return <SelectedCourse key={index} courseCode={course} />
+    })
+
     return (
-        <div className="flex flex-col h-[70%]">
+        <div className="flex flex-col h-full pr-8">
             <div className="flex justify-center pb-8">
-                <Dropdown />
+                <Dropdown selectedTerm={selectedTerm} handleSelectedTerm={handleSelectedTerm}/>
             </div>
-            <div className="flex flex-col items-center p-8 bg-black ">
-                <SelectedCourse />
-                <SelectedCourse />
-                <SelectedCourse />
+            <div className="flex flex-col items-center p-8 bg-black h-full">
+                {courses}
             </div>
         </div>
     )

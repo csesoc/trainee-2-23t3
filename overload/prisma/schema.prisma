@@ -8,6 +8,7 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Course {
@@ -22,4 +23,6 @@ model Term {
   courseId String
   term     String
   course   Course @relation(fields: [courseId], references: [courseCode])
+
+  @@index([courseId])
 }

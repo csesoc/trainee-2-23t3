@@ -22,10 +22,10 @@ export const SearchBar = () => {
 
   return (
     <div className="text-center py-4">
-      <input className="bg-white py-0.1 text-center text-0.5xl border border-black rounded-lg p-.5" type="text" placeholder="search a course" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
-      <ul className="">
+      <input className="bg-white py-0.1 text-center text-0.5xl border border-black rounded-md" type="text" placeholder="search a course" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
+      <ul className="flex flex-wrap">
         {filteredData.map((item) => (
-          <li key={(item as { name: string }).name}>{(item as { name: string }).name}</li>
+          <li className="w-64 h-40 bg-white m-10 p-4 rounded-md" key={(item as { name: string }).name}>{(item as { name: string }).name} </li>
         ))}
       </ul>
     </div>

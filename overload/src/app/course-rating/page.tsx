@@ -1,11 +1,11 @@
 import React from 'react'
-import { SearchBar } from "./SearchBar"
+import { SearchBar } from "../components/SearchBar"
 
 export default function CourseRatingPage() {
   return (
     <div className="@apply bg-[#221f1f]">
       {/* <NavBar/> */}
-      <h1 className="font-sans text-5xl text-white font-semibold text-center p-5">OverLoad</h1>
+      <h1 className="pt-20 font-sans text-5xl text-white font-semibold p-5 text-left px-20">OverLoad</h1>
       <SearchBar/>
       {/* <SortButton/> */}
     </div>

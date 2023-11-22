@@ -1,5 +1,6 @@
 'use client';
 import React from 'react'
+import CourseCard from './CourseCard';
 
 export const SearchBar = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -20,14 +21,27 @@ export const SearchBar = () => {
     (item as { name: string }).name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const courseCards = filteredData.map(item => {
+    return (
+      <div>
+        <CourseCard
+        description={(item as { name: string }).name}
+        />
+      </div>
+    );
+  })
+
   return (
-    <div className="text-center py-4">
-      <input className="bg-white py-0.1 text-center text-0.5xl border border-black rounded-md" type="text" placeholder="search a course" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
-      <ul className="flex flex-wrap">
-        {filteredData.map((item) => (
-          <li className="w-64 h-40 bg-white m-10 p-4 rounded-md" key={(item as { name: string }).name}>{(item as { name: string }).name} </li>
-        ))}
+    <div className="justify-center">
+      <div className="px-20">
+        <input className="px-3 w-full bg-white py-0.1 text-0.5xl border border-black rounded-md text-left placeholder-left" type="text" placeholder="search for a course..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
+      </div>
+      <ul className="flex flex-wrap justify-center">
+        {courseCards}
       </ul>
     </div>
   )
 }
+
+// create card item
+// create array of card using mapping

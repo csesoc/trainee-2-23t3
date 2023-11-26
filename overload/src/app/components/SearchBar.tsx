@@ -2,30 +2,43 @@
 import React from 'react'
 import CourseCard from './CourseCard';
 
+type Course = {
+  courseCode: string;
+  courseName: string;
+};
+
+type Term = {
+  id: number;
+  courseId: string;
+  term: string;
+  course: Course;
+};
+
 export const SearchBar = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [dataList, setDataList] = React.useState([]);
 
   React.useEffect(() => {
-    // Fetch the list of Pokémon from the PokeAPI (temporary)
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=151') // Fetch the first 151 Pokémon (temp data)
+    // Fetch the term list
+    fetch('http://localhost:3000/api/home') // Fetch terms
       .then((response) => response.json()) // turn data from promise into a json file so we can use data
-      .then((data) => setDataList(data.results)) // set data using setData hook
+      .then((data) => setDataList(data)) // set data using setData hook
       .catch(error => {
         // if promise not fulfilled
         console.log('Error:' + `${error.message}`);
       });
   }, []);
 
-  const filteredData = dataList.filter((item) =>
-    (item as { name: string }).name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredData: Term[] = dataList.filter((item: Term) =>
+    item.course.courseName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const courseCards = filteredData.map(item => {
     return (
       <div>
         <CourseCard
-        description={(item as { name: string }).name}
+        courseCode={item.course.courseCode}
+        courseName={item.course.courseName}
         />
       </div>
     );
@@ -42,6 +55,3 @@ export const SearchBar = () => {
     </div>
   )
 }
-
-// create card item
-// create array of card using mapping

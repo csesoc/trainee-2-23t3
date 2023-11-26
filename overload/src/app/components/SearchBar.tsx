@@ -23,7 +23,6 @@ export const SearchBar = () => {
     fetch('http://localhost:3000/api/home', { cache: 'no-store' }) // Fetch terms
       .then((response) => response.json()) // turn data from promise into a json file so we can use data
       .then((data) => {
-        console.log(data);
         setDataList(data);
       }) // set data using setData hook
       .catch((error) => {
@@ -33,7 +32,8 @@ export const SearchBar = () => {
   }, []);
 
   const filteredData: Term[] = dataList.filter((item: Term) =>
-    item.course.courseName.toLowerCase().includes(searchTerm.toLowerCase())
+    item.course.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.course.courseCode.toLowerCase().includes(searchTerm.toLocaleLowerCase())
   );
 
   const courseCards = filteredData.map((item, idx) => {

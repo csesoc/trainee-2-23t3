@@ -33,7 +33,7 @@ export const SearchBar = () => {
 
   const filteredData: Term[] = dataList.filter((item: Term) =>
     item.course.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.course.courseCode.toLowerCase().includes(searchTerm.toLocaleLowerCase())
+    item.course.courseCode.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const courseCards = filteredData.map((item, idx) => {

@@ -5,7 +5,9 @@ import Image from 'next/image'
 export default function Loading() {
   return (
     <div className="min-h-screen flex justify-center items-center  flex-col">
-      <Image src={skullSvg} alt="OverLoad" className="animate-bounce-spin"/>
+      <div className="w-1/4 h-1/4">
+        <Image src={skullSvg} alt="OverLoad" className="animate-spin colored-svg" layout="responsive"/>
+      </div>
     </div>
   )
 }

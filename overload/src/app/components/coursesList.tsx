@@ -19,6 +19,9 @@ type Term = {
 };
 
 export const CoursesList = async () => {
+  //imitate delay
+  await new Promise(resolve => setTimeout(resolve, 3000));
+
   const res = await fetch('http://localhost:3000/api/home', {
     cache: 'no-store',
   });

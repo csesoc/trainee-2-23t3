@@ -1,3 +1,5 @@
+import ScaleModal from "./ScaleModal";
+
 export default async function Page({
   params,
 }: {
@@ -20,13 +22,14 @@ export default async function Page({
         <div className="text-4xl font-bold mb-10">OverLoad Scale</div>
         <div
           className={`w-80 h-80 rounded-full bg-${
-            courseData.doomness == 1 ? 'skullGreen' : 'red-500'
+            courseData.doomness == 1 ? 'green-500' : 'red-500'
           }`}
         ></div>
-        <button className="text-black bg-white rounded-sm px-3 py-2 font-bold text-sm mt-10">
+        <button className="text-black bg-white rounded-sm px-3 py-2 font-bold text-sm mt-10 hover:opacity-40">
           Add Own Scale
         </button>
       </div>
+      <ScaleModal />
     </div>
   );
 }

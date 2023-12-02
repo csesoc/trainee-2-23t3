@@ -28,10 +28,11 @@ export default function ScaleModal({ closeModal }: ScaleModalProps) {
       </button>
       <div className="mb-3">Insert your scale of 1-5 for the course</div>
       <input
-        className="bg-black text-white h-12 rounded-md"
+        className="bg-black text-white h-12 rounded-md w-full"
         onChange={handleInput}
         value={scale}
       ></input>
+      <button className='bg-blue-500 p-1.5 rounded-md ml-auto mt-3 text-sm'>Submit</button>
     </div>
   );
 }

@@ -18,7 +18,11 @@ export default async function Page({
       </div>
       <div className="flex flex-col items-center">
         <div className="text-4xl font-bold mb-10">OverLoad Scale</div>
-        <div className="w-80 h-80 rounded-full bg-skullGreen"></div>
+        <div
+          className={`w-80 h-80 rounded-full bg-${
+            courseData.doomness == 1 ? 'skullGreen' : 'red-500'
+          }`}
+        ></div>
         <button className="text-black bg-white rounded-sm px-3 py-2 font-bold text-sm mt-10">
           Add Own Scale
         </button>

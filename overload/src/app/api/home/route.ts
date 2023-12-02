@@ -10,7 +10,5 @@ export async function GET(request: NextRequest) {
       course: true
     }
   })
-  console.log(courses)
-
   return NextResponse.json(courses);
 }

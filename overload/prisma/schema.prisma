@@ -6,16 +6,18 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
 model Course {
-  courseCode   String @id
-  courseName   String
-  termsOffered Term[]
-  doomness     Int
+  courseCode     String @id
+  courseName     String
+  termsOffered   Term[]
+  doomness       Int
+  doomnessVoters Int    @default(1)
+  description    String @db.Text
 }
 
 model Term {

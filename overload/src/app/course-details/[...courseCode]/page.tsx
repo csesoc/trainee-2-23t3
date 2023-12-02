@@ -16,6 +16,7 @@ export default function Page({ params }: { params: { courseCode: string } }) {
       const courseRes = await fetch(
         `http://localhost:3000/api/course-details/${courseCode}`
       ).then((res) => res.json());
+      console.log(courseRes)
 
       setCourseData((prev) => ({
         ...prev,
@@ -36,8 +37,8 @@ export default function Page({ params }: { params: { courseCode: string } }) {
       <div className="flex flex-col items-center">
         <div className="text-4xl font-bold mb-10">OverLoad Scale</div>
         <div
-          className={`w-80 h-80 rounded-full bg-${
-            courseData.doomness == 1 ? 'green-500' : 'red-500'
+          className={`w-80 h-80 rounded-full ${
+            courseData.doomness == 1 ? 'bg-green-500' : 'bg-red-500'
           }`}
         ></div>
         <button

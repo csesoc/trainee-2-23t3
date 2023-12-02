@@ -9,6 +9,16 @@ export default function Page({ params }: { params: { courseCode: string } }) {
     doomness: 0,
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [scale, setScale] = useState('');
+
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    const newValue = e.currentTarget.value;
+    if (parseInt(newValue) > 0 && parseInt(newValue) <= 5) {
+      setScale(newValue);
+    } else if (newValue == '') {
+      setScale(newValue);
+    }
+  };
 
   useEffect(() => {
     const populatePage = async () => {
@@ -16,7 +26,6 @@ export default function Page({ params }: { params: { courseCode: string } }) {
       const courseRes = await fetch(
         `http://localhost:3000/api/course-details/${courseCode}`
       ).then((res) => res.json());
-      console.log(courseRes)
 
       setCourseData((prev) => ({
         ...prev,
@@ -48,7 +57,7 @@ export default function Page({ params }: { params: { courseCode: string } }) {
           Add Own Scale
         </button>
       </div>
-      {isModalOpen && <ScaleModal closeModal={() => setIsModalOpen(false)} />}
+      {isModalOpen && <ScaleModal closeModal={() => setIsModalOpen(false)} handleInput={handleInput} scale={scale} />}
     </div>
   );
 }

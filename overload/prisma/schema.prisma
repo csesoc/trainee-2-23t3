@@ -16,6 +16,7 @@ model Course {
   courseName   String
   termsOffered Term[]
   doomness     Int
+  description  String @default("lol")
 }
 
 model Term {

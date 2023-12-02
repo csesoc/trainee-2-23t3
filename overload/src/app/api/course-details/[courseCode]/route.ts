@@ -2,18 +2,21 @@ import { NextRequest, NextResponse } from 'next/server';
 import prisma from '../../../../../prisma/client';
 import { useRouter } from 'next/router';
 
-export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest, { params }: { params: { courseCode: string } }) {
   const router = useRouter();
-  const courseCode = router.query.courseCode;
+  // const courseCode = router.query.courseCode;
 
   // Check if courseCode is an array and take the first element if it is
-  const courseCodeStr = Array.isArray(courseCode) ? courseCode[0] : courseCode;
+  // const courseCode = Array.isArray(courseCode) ? courseCode[0] : courseCode;
 
-  if (courseCodeStr) {
+  // const {courseCode} = request.query
+  const courseCode = params.courseCode
+
+  if (courseCode) {
     try {
       const course = await prisma.course.findUnique({
         where: {
-          courseCode: courseCodeStr,
+          courseCode: courseCode,
         },
       });
 

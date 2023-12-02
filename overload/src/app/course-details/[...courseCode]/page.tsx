@@ -1,4 +1,17 @@
-export default function page() {
+import { useRouter } from 'next/router';
+
+export default async function Page({
+  params,
+}: {
+  params: { courseCode: string };
+}) {
+  const courseCode = params.courseCode;
+
+  const courseData = await fetch(
+    `http://localhost:3000/api/course-details/comp1511${courseCode}`
+  ).then((res) => res.json());
+  console.log(courseData);
+
   return (
     <div className="flex bg-black h-screen text-white px-28 py-20 justify-evenly gap-72">
       <div>
@@ -25,7 +38,9 @@ export default function page() {
       <div className="flex flex-col items-center">
         <div className="text-4xl font-bold mb-10">OverLoad Scale</div>
         <div className="w-80 h-80 rounded-full bg-skullGreen"></div>
-        <button className="text-black bg-white rounded-sm px-3 py-2 font-bold text-sm mt-10">Add Own Scale</button>
+        <button className="text-black bg-white rounded-sm px-3 py-2 font-bold text-sm mt-10">
+          Add Own Scale
+        </button>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 export default function page() {
   return (
-    <div className="flex bg-black h-screen text-white px-10 py-20">
-      <div className="w-1/2">
+    <div className="flex bg-black h-screen text-white px-28 py-20 justify-evenly gap-72">
+      <div>
         <div className="text-4xl font-bold mb-10">COMP1511</div>
         <div>
           An introduction to problem-solving via programming, which aims to have
@@ -22,7 +22,7 @@ export default function page() {
           COMP1511 may not also enrol in COMP1911 or COMP1921.
         </div>
       </div>
-      <div className="w-1/2 flex flex-col items-center">
+      <div className="flex flex-col items-center">
         <div className="text-4xl font-bold mb-10">OverLoad Scale</div>
         <div className="w-80 h-80 rounded-full bg-skullGreen"></div>
         <button className="text-black bg-white rounded-sm px-3 py-2 font-bold text-sm mt-10">Add Own Scale</button>

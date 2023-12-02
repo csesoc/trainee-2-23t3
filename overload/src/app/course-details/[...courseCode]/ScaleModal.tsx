@@ -32,7 +32,7 @@ export default function ScaleModal({ closeModal }: ScaleModalProps) {
         onChange={handleInput}
         value={scale}
       ></input>
-      <button className='bg-blue-500 p-1.5 rounded-md ml-auto mt-3 text-sm'>Submit</button>
+      <button className='bg-blue-500 p-1.5 rounded-md ml-auto mt-3 text-sm hover:opacity-60'>Submit</button>
     </div>
   );
 }

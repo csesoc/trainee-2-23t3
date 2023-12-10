@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import ScaleModal from './ScaleModal';
+import Navbar from '@/app/components/NavBar';
 
 export default function Page({ params }: { params: { courseCode: string } }) {
   const [courseData, setCourseData] = useState({
@@ -29,6 +30,7 @@ export default function Page({ params }: { params: { courseCode: string } }) {
   }, [params.courseCode]);
 
   return (
+
     <div className="flex bg-black h-screen text-white px-28 py-20 justify-evenly gap-72">
       <div>
         <div className="text-4xl font-bold mb-10">{courseData.courseCode}</div>

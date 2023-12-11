@@ -18,7 +18,11 @@ type Term = {
   course: Course;
 };
 
-export const CoursesList = async () => {
+type CoursesListProps = {
+  selectedTerm: number
+}
+
+export const CoursesList = async ({ selectedTerm }: CoursesListProps) => {
   //imitate delay
   await new Promise(resolve => setTimeout(resolve, 3000));
 

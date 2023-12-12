@@ -17,13 +17,19 @@ export default function DoomBar({ doomness }: DoomBarProps) {
     <div
       className={`w-full h-16 mt-10 flex items-center justify-evenly ${doomColors[doomness]}`}
     >
-      {Array.from({length: 5}).map((_, idx) => (
-        <Image
-          src={skullSvg}
-          alt="skull-logo"
-          className="object-cover h-16 w-16"
+      {Array.from({ length: 3 }).map((_, idx) => (
+        <div
           key={idx}
-        />
+          className={`${
+            idx >= doomness && 'bg-white'
+          } w-full flex justify-center`}
+        >
+          <Image
+            src={skullSvg}
+            alt="skull-logo"
+            className="object-cover h-16 w-16"
+          />
+        </div>
       ))}
     </div>
   );

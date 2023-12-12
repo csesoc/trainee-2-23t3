@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import CourseCard from './CourseCard';
+import { CourseFilter } from '../CourseFilter';
 
 type Course = {
   courseCode: string;
@@ -14,7 +15,18 @@ type Term = {
   course: Course;
 };
 
-export const SearchBar = () => {
+type FilterObject = {
+  term: string;
+  isChecked: boolean;
+}
+
+type SearchBarProps = {
+  setFilterOn: React.Dispatch<React.SetStateAction<FilterObject[]>>;
+  filterOn: FilterObject[];
+};
+
+
+export const SearchBar = ({filterOn, setFilterOn}: SearchBarProps) => {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [dataList, setDataList] = React.useState([]);
 
@@ -58,7 +70,13 @@ export const SearchBar = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
+      <CourseFilter
+        setFilterOn={setFilterOn}
+      />
       <ul className="flex flex-wrap justify-center">{courseCards}</ul>
     </div>
   );
 };
+
+// pull filter
+// for each thingy

@@ -2,8 +2,12 @@
 import React from 'react'
 import { SearchBar } from "../components/SearchBar"
 
+export type FilterObject = {
+  [key: string]: boolean
+}
+
 export default function CourseRatingPage() {
-  const [filterOn, setFilterOn] = React.useState([{term: 'Term 1', isChecked: false}, {term: 'Term 2', isChecked: false}, {term: 'Term 3', isChecked: false}]);
+  const [filterOn, setFilterOn] = React.useState<FilterObject>({ 'Term 1': false, 'Term 2': false, 'Term 3': false });
   return (
     <div className="@apply bg-[#221f1f] h-screen">
       {/* <NavBar/> */}
@@ -19,7 +23,7 @@ export default function CourseRatingPage() {
 
 // Plan
 // navbar
-// search bar (look at to do list for inspo) 
+// search bar (look at to do list for inspo)
 // array of CourseCards
 // sort button
 // 

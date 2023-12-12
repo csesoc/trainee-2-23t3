@@ -15,7 +15,7 @@ export default function DoomBar({ doomness }: DoomBarProps) {
 
   return (
     <div
-      className={`w-full h-16 mt-10 flex items-center justify-evenly ${doomColors[doomness]}`}
+      className={`w-full h-16 flex mt-auto items-center justify-evenly ${doomColors[doomness]}`}
     >
       {Array.from({ length: 3 }).map((_, idx) => (
         <div

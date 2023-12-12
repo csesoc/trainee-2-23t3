@@ -58,19 +58,11 @@ export const Home = () => {
     setSelectedCourses(newSelectedCourses);
   };
 
-  //   const calculateDoomness = () => {
-  //     let result = 0;
-  //     selectedCourses.forEach((course) => {
-  //       result += course.doomness;
-  //     });
-  //     setDoomness(result);
-  //   };
-
   return (
     <div className="bg-[#221f1f] min-h-screen">
       <div className="text-center h-[20vh]"></div>
       <div className="flex pr-[8vw] pl-[8vw] gap-5">
-        <div className="w-[70%]">
+        <div className="w-[70%] flex flex-col">
           <SelectedCourses
             selectedCourses={selectedCourses}
             handleSelectTerm={handleSelectTerm}

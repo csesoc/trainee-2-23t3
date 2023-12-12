@@ -9,7 +9,7 @@ export type Course = {
     courseName: string
 }
 
-export const Home = async () => {
+export const Home = () => {
     const [selectedTerm, setSelectedTerm] = useState<number>(1);
     const [selectedCourses, setSelectedCourses] = useState<Course[]>([
         // {
@@ -34,7 +34,6 @@ export const Home = async () => {
             {/* <div className="text-center h-[20vh]">
                 hello
             </div> */}
-            <Navbar />
             <div className="text-center h-[20vh]">
                 
             </div>
@@ -45,8 +44,11 @@ export const Home = async () => {
                 </div>
                 <div className="w-[30%] bg-black">
                     {/* Content for the 30% width div */}
-                    {/* <CoursesList selectedTerm={selectedTerm} selectedCourses={selectedCourses} handleSelectCourse={handleSelectCourse}/> */}
+                    <CoursesList selectedTerm={selectedTerm} selectedCourses={selectedCourses} handleSelectCourse={handleSelectCourse}/>
                 </div>
+            </div>
+            <div className="text-center">
+                {/* you are doomed */}
             </div>
         </div>
     )

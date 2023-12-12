@@ -1,3 +1,4 @@
+"use client"
 import CourseOption from './courseOption';
 
 // const courses = [
@@ -25,9 +26,6 @@ type CoursesListProps = {
 }
 
 export const CoursesList = async ({ selectedTerm, selectedCourses, handleSelectCourse }: CoursesListProps) => {
-  //imitate delay
-  // await new Promise(resolve => setTimeout(resolve, 3000));
-
   const res = await fetch('http://localhost:3000/api/home', {
     cache: 'no-store',
   });
@@ -37,7 +35,9 @@ export const CoursesList = async ({ selectedTerm, selectedCourses, handleSelectC
   const allCourses = courses.map((course, index) => {
     const courseObj = course.course;
     const alreadySelected = selectedCourses.find((c) => c.courseCode === courseObj.courseCode);
-    if (parseInt(course.term) !== selectedTerm) return;
+    // if (parseInt(course.term.split(" ")[1]) !== selectedTerm) return;
+    // console.log(course.term.split(" ")[1])
+    // console.log(selectedTerm)
     if (alreadySelected) return;
     return (
       <CourseOption

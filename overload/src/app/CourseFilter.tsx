@@ -10,7 +10,6 @@ type CourseFilterProps = {
 export const CourseFilter = ({ filterOn, setFilterOn }: CourseFilterProps) => {
   const handleCheckboxChange = (target: string) => {
     setFilterOn(prev => ({ ...prev, [target]: !prev[target] }))
-    // setFilterOn([{term: 'Term 1', isChecked: !filterOn[0].isChecked}, {term: 'Term 2', isChecked: !filterOn[1].isChecked}, {term: 'Term 3', isChecked: !filterOn[2].isChecked}]);
   };
 
   return (

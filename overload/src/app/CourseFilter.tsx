@@ -1,10 +1,19 @@
 'use client'
 import React from 'react';
 
-export const CourseFilter = (prop) => {
-  // const [isChecked, setIsChecked] = React.useState(false);
+type FilterObject = {
+  term: string;
+  isChecked: boolean;
+}
+
+type CourseFilterProps = {
+  filterOn: FilterObject;
+  setFilterOn: React.Dispatch<React.SetStateAction<FilterObject[]>>;
+}
+
+export const CourseFilter = ({filterOn, setFilterOn}: CourseFilterProps) => {
   const handleCheckboxChange = () => {
-    setIsChecked(prev => !prev);
+    setFilterOn(prev => !prev);
   };
 
   return (
@@ -12,7 +21,7 @@ export const CourseFilter = (prop) => {
       <label>
         <input
           type="checkbox"
-          checked={isChecked}
+          checked={filterOn.isChecked}
           onChange={handleCheckboxChange}
         />
         Term 1
@@ -20,7 +29,7 @@ export const CourseFilter = (prop) => {
       <label>
         <input
           type="checkbox"
-          checked={isChecked}
+          checked={filterOn.isChecked}
           onChange={handleCheckboxChange}
         />
         Term 2
@@ -28,7 +37,7 @@ export const CourseFilter = (prop) => {
       <label>
         <input
           type="checkbox"
-          checked={isChecked}
+          checked={filterOn.isChecked}
           onChange={handleCheckboxChange}
         />
         Term 3

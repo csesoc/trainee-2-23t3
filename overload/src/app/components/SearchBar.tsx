@@ -72,6 +72,7 @@ export const SearchBar = ({filterOn, setFilterOn}: SearchBarProps) => {
       </div>
       <CourseFilter
         setFilterOn={setFilterOn}
+        filterOn={filterOn}
       />
       <ul className="flex flex-wrap justify-center">{courseCards}</ul>
     </div>

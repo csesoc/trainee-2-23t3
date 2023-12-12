@@ -1,13 +1,9 @@
+'use client';
 import React from 'react'
 import { SearchBar } from "../components/SearchBar"
-type FilterObject = {
-  term: string;
-  isChecked: boolean;
-}
 
 export default function CourseRatingPage() {
-  const [filterOn, setFilterOn] = React.useState([{term: 'Term 1', isChecked: false}, , {term: 'Term 2', isChecked: false}, {term: 'Term 3', isChecked: false}]);
-
+  const [filterOn, setFilterOn] = React.useState([{term: 'Term 1', isChecked: false}, {term: 'Term 2', isChecked: false}, {term: 'Term 3', isChecked: false}]);
   return (
     <div className="@apply bg-[#221f1f] h-screen">
       {/* <NavBar/> */}

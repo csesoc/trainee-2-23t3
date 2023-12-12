@@ -18,7 +18,11 @@ type Term = {
   course: Course;
 };
 
-export const CoursesList = async () => {
+type CoursesListProps = {
+  selectedTerm: number
+}
+
+export const CoursesList = async ({ selectedTerm }: CoursesListProps) => {
   //imitate delay
 
   const res = await fetch('http://localhost:3000/api/home', {

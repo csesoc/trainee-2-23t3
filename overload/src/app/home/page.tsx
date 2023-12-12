@@ -37,21 +37,16 @@ export const Home = () => {
   };
 
   return (
-    <div className="bg-gray-500 h-[100vh]">
-      {/* <div className="text-center h-[20vh]">
-                hello
-            </div> */}
+    <div className="bg-[#221f1f] h-[100vh]">
       <div className="text-center h-[20vh]"></div>
-      <div className="flex pr-[8vw] pl-[8vw]">
+      <div className="flex pr-[8vw] pl-[8vw] gap-5">
         <div className="w-[70%]">
-          {/* Content for the 70% width div */}
           <SelectedCourses
             selectedCourses={selectedCourses}
             handleSelectTerm={handleSelectTerm}
           />
         </div>
         <div className="w-[30%] bg-black">
-          {/* Content for the 30% width div */}
           <CoursesList
             selectedTerm={selectedTerm}
             selectedCourses={selectedCourses}

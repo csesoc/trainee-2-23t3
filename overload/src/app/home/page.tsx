@@ -36,6 +36,13 @@ export const Home = () => {
     setSelectedCourses(currentlySelectedCourses);
   };
 
+  const handleDeselectCourse = (course: Course) => {
+    const newSelectedCourses = selectedCourses.filter(
+      (c) => c.courseCode !== course.courseCode
+    );
+    setSelectedCourses(newSelectedCourses);
+  };
+
   return (
     <div className="bg-[#221f1f] h-[100vh]">
       <div className="text-center h-[20vh]"></div>
@@ -44,6 +51,7 @@ export const Home = () => {
           <SelectedCourses
             selectedCourses={selectedCourses}
             handleSelectTerm={handleSelectTerm}
+            handleDeselectCourse={handleDeselectCourse}
           />
         </div>
         <div className="w-[30%] bg-black">

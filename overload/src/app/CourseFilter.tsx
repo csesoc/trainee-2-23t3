@@ -12,9 +12,12 @@ type CourseFilterProps = {
 }
 
 export const CourseFilter = ({filterOn, setFilterOn}: CourseFilterProps) => {
-  const handleCheckboxChange = () => {
-    setFilterOn([{term: 'Term 1', isChecked: !filterOn[0].isChecked}, {term: 'Term 2', isChecked: !filterOn[1].isChecked}, {term: 'Term 3', isChecked: !filterOn[2].isChecked}]);
+  const handleCheckboxChange = (index: number) => {
+    const updatedFilter = [...filterOn];
+    updatedFilter[index].isChecked = !updatedFilter[index].isChecked;
+    setFilterOn(updatedFilter);
   };
+
 
   return (
     <div>
@@ -22,7 +25,7 @@ export const CourseFilter = ({filterOn, setFilterOn}: CourseFilterProps) => {
         <input
           type="checkbox"
           checked={filterOn[0].isChecked}
-          onChange={handleCheckboxChange}
+          onChange={() => handleCheckboxChange(0)}
         />
         Term 1
       </label>
@@ -30,15 +33,15 @@ export const CourseFilter = ({filterOn, setFilterOn}: CourseFilterProps) => {
         <input
           type="checkbox"
           checked={filterOn[1].isChecked}
-          onChange={handleCheckboxChange}
+          onChange={() => handleCheckboxChange(1)}
         />
         Term 2
       </label>
       <label>
         <input
           type="checkbox"
-          checked={filterOn[3].isChecked}
-          onChange={handleCheckboxChange}
+          checked={filterOn[2].isChecked}
+          onChange={() => handleCheckboxChange(2)}
         />
         Term 3
       </label>

@@ -43,26 +43,10 @@ export const SearchBar = ({filterOn, setFilterOn}: SearchBarProps) => {
       });
   }, []);
 
-  let filteredData: Term[] = dataList.filter((item: Term) =>
+  const filteredData: Term[] = dataList.filter((item: Term) =>
     item.course.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.course.courseCode.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-  if (filterOn[0].isChecked) {
-    filteredData = dataList.filter((item: Term) =>
-    item.term === '1'
-  );
-  }
-  if (filterOn[1].isChecked) {
-    filteredData = dataList.filter((item: Term) =>
-    item.term === '2'
-  );
-  }
-  if (filterOn[2].isChecked) {
-    filteredData = dataList.filter((item: Term) =>
-    item.term === '3'
-  );
-  }
 
   const courseCards = filteredData.map((item, idx) => {
     return (

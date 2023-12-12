@@ -14,7 +14,7 @@ export default function Dropdown({ handleSelectTerm }: DropdownProps) {
 
   return (
     <div className="w-60">
-      {/* <select
+      <select
         className="block w-full px-4 py-2 mt-2 bg-red-500 border border-gray-200 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
         defaultValue={1}
         // value={selectedOption}
@@ -24,7 +24,7 @@ export default function Dropdown({ handleSelectTerm }: DropdownProps) {
         <option value="term1">Term 1</option>
         <option value="term2">Term 2</option>
         <option value="term3">Term 3</option>
-      </select> */}
+      </select>
     </div>
   );
 }

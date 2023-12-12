@@ -6,13 +6,13 @@ import Dropdown from './termSelectDropDown';
 type SelectedCoursesProps = {
   selectedCourses: Course[];
   handleSelectTerm: (term: number) => void;
-  handleDeselectCourse: (course: Course) => void;
+  handleDeselectCourse: (courseCode: string) => void;
 };
 
 export const SelectedCourses = ({
   selectedCourses,
   handleSelectTerm,
-  handleDeselectCourse
+  handleDeselectCourse,
 }: SelectedCoursesProps) => {
   const courses = selectedCourses.map((course) => (
     <SelectedCourse

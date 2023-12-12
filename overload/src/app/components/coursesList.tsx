@@ -1,23 +1,6 @@
 'use client';
+import { Course } from '../home/page';
 import CourseOption from './courseOption';
-
-// const courses = [
-//     { courseCode: 'COMP1511', courseName: 'Programming Fundementals' },
-//     { courseCode: 'COMP1521', courseName: 'Computer Fundementals' },
-//     { courseCode: 'COMP1531', courseName: 'Software Engineering Fundementals' }
-// ]
-
-type Course = {
-  courseCode: string;
-  courseName: string;
-};
-
-type Term = {
-  id: number;
-  courseId: string;
-  term: string;
-  course: Course;
-};
 
 type CoursesListProps = {
   selectedTerm: number;
@@ -48,8 +31,7 @@ export const CoursesList = async ({
     return (
       <CourseOption
         key={index}
-        courseCode={course.courseCode}
-        courseName={course.courseName}
+        course={course}
         handleSelectCourse={handleSelectCourse}
       />
     );

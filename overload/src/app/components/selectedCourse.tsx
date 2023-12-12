@@ -1,9 +1,9 @@
-import { Course } from "../home/page";
+import { Course } from '../home/page';
 
 type SelectedCourseProps = {
   courseCode: string;
   courseName: string;
-  handleDeselectCourse: (course: Course) => void;
+  handleDeselectCourse: (courseCode: string) => void;
 };
 
 export const SelectedCourse = ({
@@ -14,7 +14,7 @@ export const SelectedCourse = ({
   return (
     <div
       className="bg-white w-[100%] m-3 rounded-md cursor-pointer"
-      onClick={() => handleDeselectCourse({ courseCode, courseName })}
+      onClick={() => handleDeselectCourse(courseCode)}
     >
       {courseCode}: {courseName}
     </div>

@@ -7,13 +7,13 @@ type FilterObject = {
 }
 
 type CourseFilterProps = {
-  filterOn: FilterObject;
+  filterOn: FilterObject[];
   setFilterOn: React.Dispatch<React.SetStateAction<FilterObject[]>>;
 }
 
 export const CourseFilter = ({filterOn, setFilterOn}: CourseFilterProps) => {
   const handleCheckboxChange = () => {
-    setFilterOn(prev => !prev);
+    setFilterOn([{term: 'Term 1', isChecked: !filterOn[0].isChecked}, {term: 'Term 2', isChecked: !filterOn[1].isChecked}, {term: 'Term 3', isChecked: !filterOn[2].isChecked}]);
   };
 
   return (
@@ -21,7 +21,7 @@ export const CourseFilter = ({filterOn, setFilterOn}: CourseFilterProps) => {
       <label>
         <input
           type="checkbox"
-          checked={filterOn.isChecked}
+          checked={filterOn[0].isChecked}
           onChange={handleCheckboxChange}
         />
         Term 1
@@ -29,7 +29,7 @@ export const CourseFilter = ({filterOn, setFilterOn}: CourseFilterProps) => {
       <label>
         <input
           type="checkbox"
-          checked={filterOn.isChecked}
+          checked={filterOn[1].isChecked}
           onChange={handleCheckboxChange}
         />
         Term 2
@@ -37,7 +37,7 @@ export const CourseFilter = ({filterOn, setFilterOn}: CourseFilterProps) => {
       <label>
         <input
           type="checkbox"
-          checked={filterOn.isChecked}
+          checked={filterOn[3].isChecked}
           onChange={handleCheckboxChange}
         />
         Term 3

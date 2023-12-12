@@ -48,6 +48,22 @@ export const SearchBar = ({filterOn, setFilterOn}: SearchBarProps) => {
     item.course.courseCode.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  if (filterOn[0].isChecked) {
+    const filteredData: Term[] = dataList.filter((item: Term) =>
+    item.term === '1'
+  );
+  }
+  if (filterOn[1].isChecked) {
+    const filteredData: Term[] = dataList.filter((item: Term) =>
+    item.term === '2'
+  );
+  }
+  if (filterOn[2].isChecked) {
+    const filteredData: Term[] = dataList.filter((item: Term) =>
+    item.term === '3'
+  );
+  }
+
   const courseCards = filteredData.map((item, idx) => {
     return (
       <div key={idx}>

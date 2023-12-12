@@ -25,10 +25,9 @@ export const CoursesList = async () => {
     cache: 'no-store',
   });
 
-  const terms: Term[] = await res.json();
+  const courses: Course[] = await res.json();
 
-  const allCourses = terms.map((term, index) => {
-    const course = term.course;
+  const allCourses = courses.map((course, index) => {
     return (
       <CourseOption
         key={index}

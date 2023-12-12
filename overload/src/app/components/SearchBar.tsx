@@ -31,17 +31,17 @@ export const SearchBar = () => {
       });
   }, []);
 
-  const filteredData: Term[] = dataList.filter((item: Term) =>
-    item.course.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.course.courseCode.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredData: Course[] = dataList.filter((item: Course) =>
+    item.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item.courseCode.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const courseCards = filteredData.map((item, idx) => {
     return (
       <div key={idx}>
         <CourseCard
-          courseCode={item.course.courseCode}
-          courseName={item.course.courseName}
+          courseCode={item.courseCode}
+          courseName={item.courseName}
         />
       </div>
     );

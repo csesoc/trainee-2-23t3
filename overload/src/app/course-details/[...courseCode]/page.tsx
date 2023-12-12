@@ -31,7 +31,7 @@ export default function Page({ params }: { params: { courseCode: string } }) {
   }, [params.courseCode]);
 
   return (
-    <div className="flex bg-black h-screen text-white px-28 py-20 gap-48">
+    <div className="flex bg-[#221f1f] h-screen text-white px-28 py-20 gap-48">
       <div>
         <div className="text-4xl font-bold mb-10">{courseData.courseCode}</div>
         <div>{courseData.description}</div>

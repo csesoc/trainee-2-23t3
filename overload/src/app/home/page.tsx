@@ -12,10 +12,10 @@ export type Course = {
 export const Home = async () => {
     const [selectedTerm, setSelectedTerm] = useState<number>(1);
     const [selectedCourses, setSelectedCourses] = useState<Course[]>([
-        {
-            courseCode: "COMP1511",
-            courseName: "Programming fundementalss"
-        }
+        // {
+        //     courseCode: "COMP1511",
+        //     courseName: "Programming fundementalss"
+        // }
     ])
 
     const handleSelectTerm = (term: number) => {
@@ -45,7 +45,7 @@ export const Home = async () => {
                 </div>
                 <div className="w-[30%] bg-black">
                     {/* Content for the 30% width div */}
-                    <CoursesList selectedTerm={selectedTerm}/>
+                    {/* <CoursesList selectedTerm={selectedTerm} selectedCourses={selectedCourses} handleSelectCourse={handleSelectCourse}/> */}
                 </div>
             </div>
         </div>

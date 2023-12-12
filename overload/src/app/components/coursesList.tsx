@@ -20,25 +20,31 @@ type Term = {
 
 type CoursesListProps = {
   selectedTerm: number
+  selectedCourses: Course[]
+  handleSelectCourse: (course: Course) => void;
 }
 
-export const CoursesList = async ({ selectedTerm }: CoursesListProps) => {
+export const CoursesList = async ({ selectedTerm, selectedCourses, handleSelectCourse }: CoursesListProps) => {
   //imitate delay
-  await new Promise(resolve => setTimeout(resolve, 3000));
+  // await new Promise(resolve => setTimeout(resolve, 3000));
 
   const res = await fetch('http://localhost:3000/api/home', {
     cache: 'no-store',
   });
 
-  const terms: Term[] = await res.json();
+  const courses: Term[] = await res.json();
 
-  const allCourses = terms.map((term, index) => {
-    const course = term.course;
+  const allCourses = courses.map((course, index) => {
+    const courseObj = course.course;
+    const alreadySelected = selectedCourses.find((c) => c.courseCode === courseObj.courseCode);
+    if (parseInt(course.term) !== selectedTerm) return;
+    if (alreadySelected) return;
     return (
       <CourseOption
         key={index}
-        courseCode={course.courseCode}
-        courseName={course.courseName}
+        courseCode={courseObj.courseCode}
+        courseName={courseObj.courseName}
+        handleSelectCourse={handleSelectCourse}
       />
     );
   });

@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
 import ScaleModal from './ScaleModal';
-import Navbar from '@/app/components/NavBar';
 import Image from 'next/image';
 import skullSvg from '@/app/resources/skull-head-svgrepo-com.svg';
 

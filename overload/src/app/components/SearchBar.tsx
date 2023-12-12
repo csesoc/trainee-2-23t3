@@ -1,10 +1,13 @@
 'use client';
-import React from 'react';
+import React, { useMemo } from 'react';
 import CourseCard from './CourseCard';
+import { CourseFilter } from '../CourseFilter';
+import { FilterObject } from '../course-rating/page';
 
 type Course = {
   courseCode: string;
   courseName: string;
+  termsOffered: Term[]
 };
 
 type Term = {
@@ -14,9 +17,15 @@ type Term = {
   course: Course;
 };
 
-export const SearchBar = () => {
+type SearchBarProps = {
+  setFilterOn: React.Dispatch<React.SetStateAction<FilterObject>>;
+  filterOn: FilterObject;
+};
+
+
+export const SearchBar = ({ filterOn, setFilterOn }: SearchBarProps) => {
   const [searchTerm, setSearchTerm] = React.useState('');
-  const [dataList, setDataList] = React.useState([]);
+  const [dataList, setDataList] = React.useState<Course[]>([]);
 
   React.useEffect(() => {
     // Fetch the term list
@@ -31,17 +40,35 @@ export const SearchBar = () => {
       });
   }, []);
 
-  const filteredData: Term[] = dataList.filter((item: Term) =>
-    item.course.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item.course.courseCode.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredData = useMemo(() => {
+    let result = dataList;
+
+    // Filter by search
+    if (searchTerm) {
+      result = result.filter(item =>
+        item.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.courseCode.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    // Filter by checkboxes
+    Object.keys(filterOn).forEach(termKey => {
+      if (filterOn[termKey]) {
+        result = result.filter(item =>
+          item.termsOffered.some(term => term.term === termKey)
+        );
+      }
+    });
+
+    return result;
+  }, [dataList, searchTerm, filterOn]);
 
   const courseCards = filteredData.map((item, idx) => {
     return (
       <div key={idx}>
         <CourseCard
-          courseCode={item.course.courseCode}
-          courseName={item.course.courseName}
+          courseCode={item.courseCode}
+          courseName={item.courseName}
         />
       </div>
     );
@@ -58,7 +85,14 @@ export const SearchBar = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
+      <CourseFilter
+        setFilterOn={setFilterOn}
+        filterOn={filterOn}
+      />
       <ul className="flex flex-wrap justify-center">{courseCards}</ul>
     </div>
   );
 };
+
+// pull filter
+// for each thingy

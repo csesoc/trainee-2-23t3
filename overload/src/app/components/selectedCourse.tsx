@@ -1,14 +1,24 @@
-type SelectedCourseProps = {
-    courseCode: string
-    courseName: string
-}
+import { Course } from '../home/page';
 
-export const SelectedCourse = ({ courseCode, courseName }: SelectedCourseProps) => {
-    return (
-        <div className="bg-white w-[100%] m-3 rounded-md">
-            {courseCode}: {courseName}
-        </div>
-    )
-}
+type SelectedCourseProps = {
+  courseCode: string;
+  courseName: string;
+  handleDeselectCourse: (courseCode: string) => void;
+};
+
+export const SelectedCourse = ({
+  courseCode,
+  courseName,
+  handleDeselectCourse,
+}: SelectedCourseProps) => {
+  return (
+    <div
+      className="bg-white w-[100%] m-3 rounded-md cursor-pointer"
+      onClick={() => handleDeselectCourse(courseCode)}
+    >
+      {courseCode}: {courseName}
+    </div>
+  );
+};
 
 export default SelectedCourse;

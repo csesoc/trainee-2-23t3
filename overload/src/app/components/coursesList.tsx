@@ -1,40 +1,29 @@
-"use client"
+'use client';
+import { Course } from '../home/page';
 import CourseOption from './courseOption';
 
-// const courses = [
-//     { courseCode: 'COMP1511', courseName: 'Programming Fundementals' },
-//     { courseCode: 'COMP1521', courseName: 'Computer Fundementals' },
-//     { courseCode: 'COMP1531', courseName: 'Software Engineering Fundementals' }
-// ]
-
-type Course = {
-  courseCode: string;
-  courseName: string;
-};
-
-type Term = {
-  id: number;
-  courseId: string;
-  term: string;
-  course: Course;
-};
-
 type CoursesListProps = {
-  selectedTerm: number
-  selectedCourses: Course[]
+  selectedTerm: number;
+  selectedCourses: Course[];
+  courses: Course[];
   handleSelectCourse: (course: Course) => void;
-}
+};
 
-export const CoursesList = async ({ selectedTerm, selectedCourses, handleSelectCourse }: CoursesListProps) => {
-  const res = await fetch('http://localhost:3000/api/home', {
-    cache: 'no-store',
-  });
+export const CoursesList = async ({
+  selectedTerm,
+  selectedCourses,
+  courses,
+  handleSelectCourse,
+}: CoursesListProps) => {
+  // const res = await fetch('http://localhost:3000/api/home', {
+  //   cache: 'no-store',
+  // });
 
-  const courses: Term[] = await res.json();
-
+  // const courses: Course[] = await res.json();
   const allCourses = courses.map((course, index) => {
-    const courseObj = course.course;
-    const alreadySelected = selectedCourses.find((c) => c.courseCode === courseObj.courseCode);
+    const alreadySelected = selectedCourses.find(
+      (c) => c.courseCode === course.courseCode
+    );
     // if (parseInt(course.term.split(" ")[1]) !== selectedTerm) return;
     // console.log(course.term.split(" ")[1])
     // console.log(selectedTerm)
@@ -42,8 +31,7 @@ export const CoursesList = async ({ selectedTerm, selectedCourses, handleSelectC
     return (
       <CourseOption
         key={index}
-        courseCode={courseObj.courseCode}
-        courseName={courseObj.courseName}
+        course={course}
         handleSelectCourse={handleSelectCourse}
       />
     );

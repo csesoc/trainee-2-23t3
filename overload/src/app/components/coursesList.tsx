@@ -30,11 +30,9 @@ export const CoursesList = async ({ selectedTerm, selectedCourses, handleSelectC
     cache: 'no-store',
   });
 
-  const courses: Term[] = await res.json();
-
+  const courses: Course[] = await res.json();
   const allCourses = courses.map((course, index) => {
-    const courseObj = course.course;
-    const alreadySelected = selectedCourses.find((c) => c.courseCode === courseObj.courseCode);
+    const alreadySelected = selectedCourses.find((c) => c.courseCode === course.courseCode);
     // if (parseInt(course.term.split(" ")[1]) !== selectedTerm) return;
     // console.log(course.term.split(" ")[1])
     // console.log(selectedTerm)
@@ -42,8 +40,8 @@ export const CoursesList = async ({ selectedTerm, selectedCourses, handleSelectC
     return (
       <CourseOption
         key={index}
-        courseCode={courseObj.courseCode}
-        courseName={courseObj.courseName}
+        courseCode={course.courseCode}
+        courseName={course.courseName}
         handleSelectCourse={handleSelectCourse}
       />
     );

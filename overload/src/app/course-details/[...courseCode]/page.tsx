@@ -11,6 +11,7 @@ export default function Page({ params }: { params: { courseCode: string } }) {
     doomness: 0,
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const doomColors: { [key: number]: string } = { 1: 'bg-green-500', 2: 'bg-yellow-500', 3: 'bg-red-500' }
 
   useEffect(() => {
     const populatePage = async () => {
@@ -38,9 +39,7 @@ export default function Page({ params }: { params: { courseCode: string } }) {
       <div className="flex flex-col items-center flex-grow">
         <div className="text-4xl font-bold mb-10">OverLoad Scale</div>
         <div
-          className={`w-80 h-80 rounded-full object-cover ${
-            courseData.doomness == 1 ? 'bg-green-500' : 'bg-red-500'
-          }`}
+          className={`w-80 h-80 rounded-full object-cover ${doomColors[courseData.doomness]}`}
         >
           <Image src={skullSvg} alt="skull-logo"></Image>
         </div>

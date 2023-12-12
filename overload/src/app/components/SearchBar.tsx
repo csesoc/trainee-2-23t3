@@ -2,6 +2,7 @@
 import React from 'react';
 import CourseCard from './CourseCard';
 import { CourseFilter } from '../CourseFilter';
+import { FilterObject } from '../course-rating/page';
 
 type Course = {
   courseCode: string;
@@ -15,14 +16,9 @@ type Term = {
   course: Course;
 };
 
-type FilterObject = {
-  term: string;
-  isChecked: boolean;
-}
-
 type SearchBarProps = {
-  setFilterOn: React.Dispatch<React.SetStateAction<FilterObject[]>>;
-  filterOn: FilterObject[];
+  setFilterOn: React.Dispatch<React.SetStateAction<FilterObject>>;
+  filterOn: FilterObject;
 };
 
 
@@ -48,17 +44,17 @@ export const SearchBar = ({filterOn, setFilterOn}: SearchBarProps) => {
     item.course.courseCode.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  if (filterOn[0].isChecked) {
+  if (filterOn['Term 1']) {
     const filteredData: Term[] = dataList.filter((item: Term) =>
     item.term === '1'
   );
   }
-  if (filterOn[1].isChecked) {
+  if (filterOn['Term 2']) {
     const filteredData: Term[] = dataList.filter((item: Term) =>
     item.term === '2'
   );
   }
-  if (filterOn[2].isChecked) {
+  if (filterOn['Term 3']) {
     const filteredData: Term[] = dataList.filter((item: Term) =>
     item.term === '3'
   );

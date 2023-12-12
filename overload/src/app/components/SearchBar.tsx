@@ -43,23 +43,23 @@ export const SearchBar = ({filterOn, setFilterOn}: SearchBarProps) => {
       });
   }, []);
 
-  const filteredData: Term[] = dataList.filter((item: Term) =>
+  let filteredData: Term[] = dataList.filter((item: Term) =>
     item.course.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item.course.courseCode.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   if (filterOn[0].isChecked) {
-    const filteredData: Term[] = dataList.filter((item: Term) =>
+    filteredData = dataList.filter((item: Term) =>
     item.term === '1'
   );
   }
   if (filterOn[1].isChecked) {
-    const filteredData: Term[] = dataList.filter((item: Term) =>
+    filteredData = dataList.filter((item: Term) =>
     item.term === '2'
   );
   }
   if (filterOn[2].isChecked) {
-    const filteredData: Term[] = dataList.filter((item: Term) =>
+    filteredData = dataList.filter((item: Term) =>
     item.term === '3'
   );
   }

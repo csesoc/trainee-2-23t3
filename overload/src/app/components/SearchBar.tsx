@@ -43,6 +43,7 @@ export const SearchBar = ({ filterOn, setFilterOn }: SearchBarProps) => {
   const filteredData = useMemo(() => {
     let result = dataList;
 
+    // Filter by search
     if (searchTerm) {
       result = result.filter(item =>
         item.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -50,6 +51,7 @@ export const SearchBar = ({ filterOn, setFilterOn }: SearchBarProps) => {
       );
     }
 
+    // Filter by checkboxes
     Object.keys(filterOn).forEach(termKey => {
       if (filterOn[termKey]) {
         result = result.filter(item =>

@@ -18,17 +18,20 @@ type Term = {
   course: Course;
 };
 
-export const CoursesList = async () => {
+type CoursesListProps = {
+  selectedTerm: number
+}
+
+export const CoursesList = async ({ selectedTerm }: CoursesListProps) => {
   //imitate delay
 
   const res = await fetch('http://localhost:3000/api/home', {
     cache: 'no-store',
   });
 
-  const terms: Term[] = await res.json();
+  const courses: Course[] = await res.json();
 
-  const allCourses = terms.map((term, index) => {
-    const course = term.course;
+  const allCourses = courses.map((course, index) => {
     return (
       <CourseOption
         key={index}

@@ -9,7 +9,7 @@ type CourseOptionProps = {
 }
 export const CourseOption = ({courseCode, courseName, handleSelectCourse}: CourseOptionProps) => {
     return (
-        <div className=" flex justify-center bg-white m-5" onClick={() => handleSelectCourse({courseCode, courseName})}>
+        <div className=" flex justify-center bg-white m-5 cursor-pointer" onClick={() => handleSelectCourse({courseCode, courseName})}>
             {courseCode}: {courseName}
         </div>
     )

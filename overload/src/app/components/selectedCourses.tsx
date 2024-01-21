@@ -28,7 +28,7 @@ export const SelectedCourses = ({
       <div className="flex justify-center pb-8">
         <Dropdown handleSelectTerm={handleSelectTerm} />
       </div>
-      <div className="flex flex-col items-center p-8 bg-black ">{courses}</div>
+      <div className="flex flex-col items-center p-8 bg-black">{courses}</div>
     </div>
   );
 };

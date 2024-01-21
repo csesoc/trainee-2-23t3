@@ -19,12 +19,24 @@ export const Home = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('http://localhost:3000/api/home', {
-        cache: 'no-store',
-      });
-      const courses = await res.json();
-      setAllCourses(courses);
+      try {
+        const res = await fetch('http://localhost:3002/api/home', {
+          cache: 'no-store',
+        });
+  
+        if (!res.ok) {
+          // Check if the response status is not ok (e.g., 404 Not Found, 500 Internal Server Error)
+          throw new Error(`Failed to fetch data. Status: ${res.status}`);
+        }
+  
+        const courses = await res.json();
+        setAllCourses(courses);
+      } catch (error) {
+        // Handle the error here
+        console.error('Error fetching data:', error.message);
+      }
     };
+  
     fetchData();
   }, []);
 
@@ -62,15 +74,15 @@ export const Home = () => {
     <div className="bg-[#221f1f] min-h-screen">
       <div className="text-center h-[20vh]"></div>
       <div className="flex pr-[8vw] pl-[8vw] gap-5">
-        <div className="w-[70%] flex flex-col">
+        <div className="w-[70%] flex flex-col font-sans">
           <SelectedCourses
             selectedCourses={selectedCourses}
             handleSelectTerm={handleSelectTerm}
             handleDeselectCourse={handleDeselectCourse}
           />
-          <DoomBar doomness={doomness} />
+          <DoomBar doomness={doomness}/>
         </div>
-        <div className="w-[30%] bg-black">
+        <div className="w-[30%] bg-black font-sans">
           <CoursesList
             selectedTerm={selectedTerm}
             selectedCourses={selectedCourses}

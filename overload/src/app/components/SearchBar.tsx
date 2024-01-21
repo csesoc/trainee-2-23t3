@@ -29,10 +29,11 @@ export const SearchBar = ({ filterOn, setFilterOn }: SearchBarProps) => {
 
   React.useEffect(() => {
     // Fetch the term list
-    fetch('http://localhost:3000/api/home', { cache: 'no-store' }) // Fetch terms
+    fetch('http://localhost:3002/api/home', { cache: 'no-store' }) // Fetch terms
       .then((response) => response.json()) // turn data from promise into a json file so we can use data
       .then((data) => {
         setDataList(data);
+        console.log(data)
       }) // set data using setData hook
       .catch((error) => {
         // if promise not fulfilled
@@ -93,6 +94,3 @@ export const SearchBar = ({ filterOn, setFilterOn }: SearchBarProps) => {
     </div>
   );
 };
-
-// pull filter
-// for each thingy

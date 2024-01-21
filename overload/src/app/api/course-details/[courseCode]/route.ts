@@ -11,7 +11,6 @@ export async function GET(request: NextRequest, { params }: { params: { courseCo
           courseCode: courseCode,
         },
       });
-
       if (course) {
         return NextResponse.json(course, { status: 200 });
       } else {

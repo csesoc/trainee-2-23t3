@@ -1,5 +1,5 @@
 'use client';
-import { Course } from '../home/page';
+import { Course } from '../types';
 import CourseOption from './courseOption';
 
 type CoursesListProps = {

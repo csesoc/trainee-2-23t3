@@ -1,6 +1,6 @@
 'use client';
 import { Button } from '@nextui-org/react';
-import { Course } from '../home/page';
+import { Course } from '../types';
 
 type CourseOptionProps = {
   course: Course;
@@ -12,7 +12,7 @@ export const CourseOption = ({
 }: CourseOptionProps) => {
   return (
     <div
-      className=" flex justify-center bg-white m-5 cursor-pointer"
+      className=" flex justify-center bg-white m-5 cursor-pointer rounded-md"
       onClick={() => handleSelectCourse(course)}
     >
       {course.courseCode}: {course.courseName}

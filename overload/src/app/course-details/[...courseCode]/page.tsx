@@ -11,15 +11,21 @@ export default function Page({ params }: { params: { courseCode: string } }) {
     doomness: 0,
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const doomColors: { [key: number]: string } = { 1: 'bg-green-500', 2: 'bg-yellow-500', 3: 'bg-red-500' }
+  const doomColors: { [key: number]: string } = { 
+    0: 'bg-green-500',
+    1: 'bg-green-500', 
+    2: 'bg-green-500', 
+    3: 'bg-yellow-500', 
+    4: 'bg-orange-300', 
+    5: 'bg-red-500' }
 
   useEffect(() => {
     const populatePage = async () => {
       const courseCode = params.courseCode;
       const courseRes = await fetch(
-        `http://localhost:3000/api/course-details/${courseCode}`
+        `/api/course-details/${courseCode}`
       ).then((res) => res.json());
-
+      console.log('API Response:', courseRes);
       setCourseData((prev) => ({
         ...prev,
         courseCode: courseRes.courseCode,
@@ -50,7 +56,7 @@ export default function Page({ params }: { params: { courseCode: string } }) {
           Add Own Scale
         </button>
       </div>
-      {isModalOpen && <ScaleModal closeModal={() => setIsModalOpen(false)} />}
+      {isModalOpen && <ScaleModal closeModal={() => setIsModalOpen(false)} courseCode={courseData.courseCode}/>}
     </div>
   );
 }

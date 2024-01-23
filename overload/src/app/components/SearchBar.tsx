@@ -29,7 +29,7 @@ export const SearchBar = ({ filterOn, setFilterOn }: SearchBarProps) => {
 
   React.useEffect(() => {
     // Fetch the term list
-    fetch('http://localhost:3002/api/home', { cache: 'no-store' }) // Fetch terms
+    fetch('/api/home', { cache: 'no-store' }) // Fetch terms
       .then((response) => response.json()) // turn data from promise into a json file so we can use data
       .then((data) => {
         setDataList(data);

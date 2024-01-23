@@ -23,7 +23,7 @@ export default function Page({ params }: { params: { courseCode: string } }) {
     const populatePage = async () => {
       const courseCode = params.courseCode;
       const courseRes = await fetch(
-        `http://localhost:3002/api/course-details/${courseCode}`
+        `/api/course-details/${courseCode}`
       ).then((res) => res.json());
       console.log('API Response:', courseRes);
       setCourseData((prev) => ({

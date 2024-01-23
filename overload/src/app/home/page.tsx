@@ -2,16 +2,10 @@
 import SelectedCourses from '../components/selectedCourses';
 import CoursesList from '../components/coursesList';
 import { useEffect, useState } from 'react';
-import Navbar from '../components/NavBar';
 import DoomBar from '../components/DoomBar';
+import { Course } from '../types';
 
-export type Course = {
-  courseCode: string;
-  courseName: string;
-  doomness: number;
-};
-
-export const Home = () => {
+export default function Page() {
   const [selectedTerm, setSelectedTerm] = useState<number>(1);
   const [selectedCourses, setSelectedCourses] = useState<Course[]>([]);
   const [allCourses, setAllCourses] = useState<Course[]>([]);
@@ -23,20 +17,20 @@ export const Home = () => {
         const res = await fetch('/api/home', {
           cache: 'no-store',
         });
-  
+
         if (!res.ok) {
           // Check if the response status is not ok (e.g., 404 Not Found, 500 Internal Server Error)
           throw new Error(`Failed to fetch data. Status: ${res.status}`);
         }
-  
+
         const courses = await res.json();
         setAllCourses(courses);
       } catch (error) {
         // Handle the error here
-        console.error('Error fetching data:', error.message);
+        console.error('Error fetching data:', error);
       }
     };
-  
+
     fetchData();
   }, []);
 
@@ -80,7 +74,7 @@ export const Home = () => {
             handleSelectTerm={handleSelectTerm}
             handleDeselectCourse={handleDeselectCourse}
           />
-          <DoomBar doomness={doomness}/>
+          <DoomBar doomness={doomness} />
         </div>
         <div className="w-[30%] bg-black font-sans">
           <CoursesList
@@ -94,6 +88,4 @@ export const Home = () => {
       <div className="text-center">{/* you are doomed */}</div>
     </div>
   );
-};
-
-export default Home;
+}

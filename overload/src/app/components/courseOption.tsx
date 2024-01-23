@@ -1,6 +1,6 @@
 'use client';
 import { Button } from '@nextui-org/react';
-import { Course } from '../home/page';
+import { Course } from '../types';
 
 type CourseOptionProps = {
   course: Course;

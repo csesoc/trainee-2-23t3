@@ -1,5 +1,5 @@
 'use client';
-import { Course } from '../home/page';
+import { Course } from '../types';
 import SelectedCourse from './selectedCourse';
 import Dropdown from './termSelectDropDown';
 

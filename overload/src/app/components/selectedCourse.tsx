@@ -1,5 +1,3 @@
-import { Course } from '../home/page';
-
 type SelectedCourseProps = {
   courseCode: string;
   courseName: string;

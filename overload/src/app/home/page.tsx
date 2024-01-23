@@ -20,7 +20,7 @@ export const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('http://localhost:3002/api/home', {
+        const res = await fetch('/api/home', {
           cache: 'no-store',
         });
   
